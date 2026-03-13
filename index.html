@@ -95,7 +95,7 @@
 </head>
 <body>
     <div class="timer-container" id="timerContainer">
-        <div class="timer-display" id="display">10:00</div>
+        <div class="timer-display" id="display"></div>
         <div class="controls">
             <button class="start-btn" id="startBtn">Start</button>
             <button class="reset-btn" id="resetBtn">Reset</button>
@@ -103,7 +103,9 @@
     </div>
 
     <script>
-        let timeLeft = 600;
+        const params = new URLSearchParams(window.location.search);
+        const minutes = parseInt(params.get("minutes")) || 10;
+        let timeLeft = minutes * 60;
         let timerId = null;
         let isRunning = false;
 
